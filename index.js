@@ -24,7 +24,7 @@ async function main(args) {
   var incomingMessage = { name: name, email: email, message: message }
   messageList.push(incomingMessage);
   await updateMessageList(messageList);
-  return {status:true, message: "messaged saved"};
+  return {status:true, message: "message saved"};
 }
 
 async function updateMessageList(updatedMessages) {
