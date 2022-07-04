@@ -24,7 +24,7 @@ async function main(args) {
   var incomingMessage = { name: name, email: email, message: message }
   messageList.push(incomingMessage);
   await updateMessageList(messageList);
-  return {status:true, message: "message saved"};
+  return {statusCode: 200, message: "message saved"};
 }
 
 async function updateMessageList(updatedMessages) {
@@ -61,11 +61,11 @@ async function getOldMessages() {
 
 function validateInput(name, email, message) {
     if(!name.length || !email.length || !message.length) {
-        return {status:false, message: "All fields must be filled"};
+        return {statusCode: 400, message: "All fields must be filled"};
     }
     let regex = new RegExp('[a-z0-9]+@[a-z]+\.[a-z]{2,3}');
     if(!regex.test(email)) {
-        return {status:false, message: "Please provide a valid email"};
+        return {statusCode: 400, message: "Please provide a valid email"};
     }
     return {passed:true, message: ""};
 }
